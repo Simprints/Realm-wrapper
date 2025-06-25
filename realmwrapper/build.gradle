@@ -1,0 +1,38 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'io.realm.kotlin' version '3.0.0'
+}
+
+
+apply from: 'publish.build.gradle'
+android {
+    compileSdk 35
+    namespace 'com.simprints.realmwrapper'
+
+    defaultConfig {
+        minSdk 23
+        targetSdk 35
+        versionCode Integer.parseInt(VERSION_CODE)
+        versionName VERSION_NAME
+
+
+    }
+    dependencies {
+        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2")
+        api("io.realm.kotlin:library-base:3.0.0")
+        implementation("androidx.annotation:annotation:1.9.1")
+        testImplementation("junit:junit:4.13.2")
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}

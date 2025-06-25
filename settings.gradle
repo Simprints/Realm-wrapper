@@ -1,0 +1,19 @@
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+
+        maven {
+            name 'RealmWrapperGitHubPackages'
+            url = uri('https://maven.pkg.github.com/simprints/Realm-wrapper')
+            credentials {
+                username = properties.hasProperty('GITHUB_USERNAME') ? properties.GITHUB_USERNAME : System.getenv('GITHUB_USERNAME')
+                password = properties.hasProperty('GITHUB_TOKEN') ? properties.GITHUB_TOKEN : System.getenv('GITHUB_TOKEN')
+            }
+        }
+
+    }
+}
+rootProject.name = "realm-wrapper"
+include ':realmwrapper'
