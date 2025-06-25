@@ -1,0 +1,28 @@
+[versions]
+annotationVersion = "1.9.1"
+junitVersion = "4.13.2"
+kotlin_version = "2.0.20"
+kotlin_coroutine_version = "1.10.2"
+ksp_version = "2.0.20-1.0.24"
+android_gradlePlugin_version = "8.10.1"
+hilt_version = "2.56.2"
+hilt_androidx_version = "1.2.0"
+libraryBaseVersion = "3.0.0"
+
+[libraries]
+#Kotlin
+annotation = { module = "androidx.annotation:annotation", version.ref = "annotationVersion" }
+junit = { module = "junit:junit", version.ref = "junitVersion" }
+kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin_version" }
+kotlin-coroutinesAndroid = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlin_coroutine_version" }
+
+#hilt
+hilt = { module = "com.google.dagger:hilt-android", version.ref = "hilt_version" }
+hilt-dagger-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hilt_version" }
+hilt-compiler = { module = "androidx.hilt:hilt-compiler", version.ref = "hilt_androidx_version" }
+library-base = { module = "io.realm.kotlin:library-base", version.ref = "libraryBaseVersion" }
+
+[plugins]
+#Kotlin
+kotlin = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin_version" }
+gradlePlugin = { id = "com.android.tools.build:gradle", version.ref = "android_gradlePlugin_version" }

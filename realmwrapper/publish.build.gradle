@@ -1,0 +1,25 @@
+apply plugin: 'maven-publish'
+def githubProperties = new Properties()
+githubProperties.load(new FileInputStream(rootProject.file("github.properties")))
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId 'com.simprints'
+            artifactId 'realmwrapper'
+            version VERSION_NAME
+            artifact("$buildDir/outputs/aar/realmwrapper-release.aar")
+        }
+    }
+
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri(githubProperties['repo.url'])
+            credentials {
+                username = System.getenv("GITHUB_ACTOR")
+                password = System.getenv("GITHUB_TOKEN")
+            }
+        }
+    }
+}
